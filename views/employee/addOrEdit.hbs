@@ -1,0 +1,185 @@
+<div class="topnav" id="myTopnav">
+  <a href="/employee/" class="" >Add</a>
+  <a href="/employee/list" class="" >View</a>
+  <a href="/employee/individual" class="" >Individual</a>
+<a href="/employee/account" class="" >Attendance</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+    <div id="#Home" class="tabcontent">
+
+        <form action="/employee" method="POST" id="regForm" autocomplete="off">
+            <h1>Add or Edit work</h1>
+            <!-- One "tab" for each step in the form: -->
+            <div class="tab">Work details:
+
+                <p>
+                    <label>Date</label><input type="date" placeholder="Date..." name="date"></p>
+                <p><label>Name of the seller</label><input placeholder="Name.." name="name"></p>
+                <p> <label>Number of sacks</label><input type="number" placeholder="Sack.." name="sack"></p>
+
+                <p> <label>Kooli</label><input placeholder="Kooli.." name="kooli"></p>
+                <p>
+                    <label>Number of the workers</label><input placeholder="Last name..." name="worker" id="num"></p>
+                    
+            </div>
+            <div class="tab" id="workercontainer">
+                
+                              <datalist id="browsers">
+                                  {{#each usersDocuments}}
+                                <option value={{this.name}}>
+                                 {{/each}}
+                                
+                                </datalist>
+  <label>Name of 1</label>
+
+
+                  <input type="text" name="num0" list="browsers" >
+                <br>
+                <br>
+                  <label>Name of 2</label>
+                <input type="text" name="num1" list="browsers" class="class-a">
+                <br>
+                <br>
+                  <label>Name of 3</label>
+                <input type="text" name="num2" list="browsers" class="class-b">
+                <br>
+                <br>
+                  <label>Name of 4</label>
+                <input type="text" name="num3" list="browsers" class="class-c">
+                <br>
+                <br>
+                  <label>Name of 5</label>
+                <input type="text" name="num4" list="browsers" class="class-d">
+                <br>
+                <br>
+                  <label>Name of 6</label>
+                <input type="text" name="num5" list="browsers" class="class-e">
+                <br>
+                <br>
+                  <label>Name of 7</label>
+                <input type="text" name="num6" list="browsers" class="class-f">
+                <br>
+                <br>
+                  <label>Name of 8</label>
+                <input type="text" name="num7" list="browsers" class="class-g">
+                <br>
+                <br>
+                  <label>Name of 9</label>
+                <input type="text" name="num8" list="browsers" class="class-h">
+                <br>
+                <br>
+                  <label>Name of 10</label>
+                <input type="text" name="num9" list="browsers" class="class-i">
+                <br>
+                <br>
+                  <label>Name of 11</label>
+                <input type="text" name="num10" list="browsers" class="class-j">
+                <br>
+                <br>
+                  <label>Name of 12</label>
+                <input type="text" name="num11" list="browsers" class="class-k">
+                <br>
+                <br>
+                
+  
+  
+                
+        
+                    
+    
+               
+                
+            
+            </div>
+
+
+            <div style="overflow:auto;">
+                <div style="float:right;">
+                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                </div>
+            </div>
+            <!-- Circles which indicates the steps of the form: -->
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step"></span>
+                <span class="step"></span>
+            </div>                                      
+        </form>
+
+
+    </div>
+
+   
+
+   
+
+ 
+<!--
+/////////////////////////////////////////////////////////////////////////////////////////////
+<div class="alert-danger">{{error}}</div>
+<h3>{{viewTitle}}</h3>
+
+
+    <form action="/employee" method="POST" autocomplete="off" onsubmit="openModal()" id="myForm">
+        <input type="hidden" name="_id" value="{{employee._id}}">
+        <div class="form-group">
+            <label>Date</label>
+            <input type="date" class="form-control" name="date" value="{{employee.date}}" placeholder="Date">
+                
+        </div>
+        <div class="form-group">
+            <label>Seller Name</label>
+            <input type="text" class="form-control" name="name" value="{{employee.name}}" placeholder="Seller name">
+        
+        </div>
+        <div class="form-row">
+            <div class="form-group md-6">
+                <label>No of Sack</label>
+                <input type="text" name="sack" placeholder="000" value="{{employee.sack}}" class="form-control">
+                
+             </div>
+             <div class="form-group md-6">
+                <label>Kooli</label>
+                <input type="text" name="kooli" placeholder="00" value="{{employee.kooli}}" class="form-control">
+                
+             </div>
+                <div class="form-group md-6">
+                <label>Number of workers</label>
+                <input type="number" name="worker" placeholder="00" value="{{employee.worker}}" class="form-control">
+                
+             </div>
+            
+                
+        </div>
+ 
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-info">Submit</button>
+            <a href="/employee/list" class="btn btn-danger">
+                View All
+            </a>
+        </div>
+
+
+
+    </form>
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!/.modal-content -->
+  <!--</div> /.modal-dialog 
+</div> /.modal -->

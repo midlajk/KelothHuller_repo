@@ -1,0 +1,152 @@
+<div class="topnav" id="myTopnav">
+ <a href="/employee/" class="" >Add</a>
+  <a href="/employee/list" class="" >View</a>
+  <a href="/employee/individual" class="" >Individual</a>
+<a href="/employee/account" class="" >Attendance</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+        <div class="col-md-8 offset-md-2 margin-top">
+            <h3>
+               <!--<a type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+                    <i class="fa fa-plus"> </i> Check New
+                </a>-->
+                <a href="/employee/individual" type="button" class="btn btn-primary" >
+                    Back to home
+                </a>
+                <Span>{{employeeName}}</Span>
+            </h3>
+            <table class="table table-striped" id="list">
+                <thead>
+                    <tr>
+                        
+                        <th>Date</th>
+                        <th>Work of (Seller Name)</th>
+                        <th>Number of sacks</th>
+                        <th>Kooli</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+            
+            {{#each usersDocuments}}
+            {{#each this.details}}
+          
+                
+                    <tr>
+                    
+           
+                            <td>{{this.date}}</td>
+                            <td>{{this.sellername}}</td>
+                            <td>{{this.chack}}</td>
+                            <td>{{this.kooli}}</td>
+                  
+                           
+                    </tr>
+                  
+                              
+        {{/each}}
+                   
+        {{/each}}
+               
+
+              
+     
+
+
+
+                    <tr>
+                        <td colspan="3">Total Amount</td>
+                        <td>{{total}}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Filter View</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div>
+
+                            <p>
+                                <label>From Date</label><input type="date" placeholder="Date..." name="date"></p>
+                            <p>
+                                <label>To Date</label><input type="date" placeholder="Date..." name="date"></p>
+                            <p><label>Name of the worker</label> <input list="browsers" name="browser" placeholder="Name of the worker">
+                                <datalist id="browsers">
+                                  <option value="Internet Explorer">
+                                  <option value="Firefox">
+                                  <option value="Chrome">
+                                  <option value="Opera">
+                                  <option value="Safari">
+                                </datalist>
+                            </p>
+
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--
+
+////////////////////////////////////////////////////
+<h3>
+    <a href="/employee" class="btn btn-danger">
+        <i class="fa fa-plus"> </i> Create New
+    </a>
+    Employee List
+</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Sack</th>
+            <th>kooli</th>
+            <th>worker</th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each usersDocuments}}
+            <tr>
+                <td>{{this.date}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.sack}}</td>
+                <td>{{this.kooli}}</td>
+                <td>{{this.worker}}</td>
+                <td>
+                    <a href="/employee/{{this._id}}">
+                        <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                    </a>
+                    <a href="/employee/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record?');">
+                        <i class="fa fa-trash fa-lg" aria-hidden="true">
+                         
+                        </i>
+                    </a>
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
+-->

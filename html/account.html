@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individual | keloth</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/views/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        /* Set height of body and the document to 100% */
+        
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial;
+            background-color: #f1f1f1;
+        }
+        
+        .table {
+            overflow: scroll;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="align-items-center">
+        <div style="background-color:white;margin-top:15px;padding:20px;margin: auto;" class="col-md-8 offset-md-3 divtab">
+            <h3>
+                <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+                    <i class="fa fa-plus"> </i> Search new
+                </a>
+                <a href="index.html" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    Back to home
+                </a>
+                <Span>Accounts of the Date</Span>
+            </h3>
+            <table class="table table-striped" id="list">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Sacks</th>
+                        <th colspan="2">Emp 1</th>
+                        <th colspan="2">Emp 2</th>
+                        <th colspan="2">Emp 3</th>
+                        <th colspan="2">Emp 4</th>
+
+
+
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr>
+                        <td colspan="2">Total Amount</td>
+                        <td colspan="2">amount</td>
+                        <td colspan="2">223</td>
+                        <td colspan="2">2323</td>
+                        <td colspan="2">2323</td>
+
+
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Filter View</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div>
+
+                                <p>
+                                    <label>From Date</label><input type="date" placeholder="Date..." name="date"></p>
+                                <p>
+                                    <label>To Date</label><input type="date" placeholder="Date..." name="date"></p>
+                            </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

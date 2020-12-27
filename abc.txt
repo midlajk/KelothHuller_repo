@@ -1,0 +1,270 @@
+function insertRecord(req, res) {
+
+    var employee = new Employee();
+
+    employee.date = req.body.date;
+
+    employee.name = req.body.name;
+
+    employee.sack = req.body.sack;
+
+    employee.kooli = req.body.kooli;
+
+    employee.worker = req.body.worker;
+
+    employee.perHead = req.body.sack * req.body.kooli / req.body.worker;
+
+    /*    if (employee.name == "" || employee.sack == "" || employee.date == "" || employee.kooli == "" || employee.worker == "") {
+            res.render('employee/addOrEdit', ({
+                error: 'enter all the details',
+                employee: req.body
+            }))
+            return;
+        }
+        */
+
+    employee.save((err, doc) => {
+        if (!err) {
+            res.redirect('employee/list');
+        } else {
+            console.log("error " + err);
+        }
+    });
+
+}
+// displaying
+router.get('/list', async(req, res) => {
+    // get all items from db collection
+
+    Employee.find() // <=> wrapper for Model.find() ...
+        .then(documents => {
+            // create context Object with 'usersDocuments' key
+            const context = {
+                    usersDocuments: documents.map(document => {
+                        return {
+                            date: document.date,
+                            name: document.name,
+                            sack: document.sack,
+                            kooli: document.kooli,
+                            worker: document.worker
+                        }
+                    })
+                }
+                // rendering usersDocuments from context Object
+            res.render('employee/list', {
+                usersDocuments: context.usersDocuments
+            })
+        })
+        .catch(error => res.status(500).send(error))
+})
+
+function updateRecord(req, res) {
+    Employee.findOneAndUpdate({ _id: req.body._id }, req.body, { new: true }, (err, doc) => {
+        if (!err) {
+            res.redirect('employee/list');
+        } else {
+            res.render('employee/addOrEdit', ({
+                viewTitle: 'Update employee',
+                employee: req.body
+            }))
+        }
+
+    })
+}
+
+//////
+const express = require('express');
+
+const mongoose = require('mongoose');
+///
+const options = document.querySelector('.options');
+		const datalistCreator = document.querySelector('.datalist-creator');
+		const datalistsBlock = document.querySelector('.datalists');
+		let counter = 0;
+
+		datalistCreator.addEventListener('click', function() {
+			const datalist = document.createElement('datalist');
+			const output = document.createElement('input');
+
+			datalist.setAttribute('id', 'datalist' + counter);
+			output.setAttribute('list', 'datalist' + counter);
+			output.placeholder = 'Datalist of ' + options.value;
+			
+			for (let i = 0; i < options.value; i++) {
+				const option = document.createElement('option');
+				option.value = i + 1;
+				datalist.appendChild(option)
+			}
+
+			datalistsBlock.appendChild(datalist);
+			datalistsBlock.appendChild(output);
+			counter++;
+
+			return output;
+		})
+
+//including model class
+
+const Employee = mongoose.model('Employee')
+
+const router = express.Router();
+
+router.get("/", (req, res) => {
+    res.render("employee/addOrEdit", {
+
+    })
+})
+router.get("/list", (req, res) => {
+    res.render("employee/list", {
+
+    })
+})
+
+// handle the post 
+
+router.post('/formsubmit', (req, res) => {
+    if (req.body._id == "") {
+        insertRecord(req, res);
+    } else {
+        updateRecord(req, res);
+    }
+
+})
+
+
+router.get('/account', (req, res) => {
+    res.render("employee/account", {
+
+    })
+})
+
+router.get('/individual', (req, res) => {
+        res.render("employee/individual", {
+
+        })
+    })
+    /*
+    router.get('/:id', (req, res) => {
+        Employee.findById(req.params.id, (err, doc) => {
+            if (!err) {
+                res.render('employee/addOREdit', ({
+                    viewTitle: 'Update data',
+                    employee: doc
+                }))
+            }
+        })
+    })
+    */
+module.exports = router;
+
+ Mark.countDocuments({ date: req.body.date }, function(err, count) {
+        if (count > 0) {
+
+            Attendance.find() // <=> wrapper for Model.find() ...
+                .then(documents => {
+                    // create context Object with 'usersDocuments' key
+                    const context = {
+                        usersDocuments: documents.map(documents => {
+                            return {
+                                name: documents.name
+
+                            }
+                        })
+                    }
+
+
+                    // rendering usersDocuments from context Object
+                    res.render('employee/addAttend', {
+
+                        usersDocuments: context.usersDocuments,
+                        date: "Already Marked leave of  " + datetime
+
+                    })
+                })
+                .catch(error => res.status(500).send(error))
+
+        } else {
+            var attendance = req.body.worker;
+
+            var add = new Mark({
+                date: req.body.date
+
+            })
+            for (let index = 0; index < attendance.length; index++) {
+
+                add.worker.push(attendance[index]);
+
+                Personal.countDocuments({ name: attendance[index] }, function(err, count) {
+                    if (count > 0) {
+                        Personal.findOne({ name: attendance[index] }, function(errs, datas) {
+                            if (errs) {
+                                res.send(errs);
+                            } else {
+                                console.log(datas);
+                                datas.updateOne({
+                                        $push: {
+                                            "date": req.body.date
+
+
+                                        }
+                                    }, { safe: true, upsert: true },
+                                    function(err, model) {
+                                        console.log(err);
+                                    }
+                                );
+                            }
+
+                        });
+
+
+
+
+                    } else {
+                        var set = new Personal({
+                            name: attendance[index],
+
+
+
+                        });
+                        set.date.push(req.body.date);
+
+                        set.save(function(err) {
+                            if (err) return handleError(err);
+                            // saved!
+                        });
+
+                    }
+
+                })
+                add.save(function(err) {
+                    if (err) return handleError(err);
+                    // saved!
+                });
+
+
+
+            }
+
+        }
+
+
+    })
+
+    res.render('employee/accountlist', {
+
+    })
+
+
+
+     var set = new Personal({
+                    name: attendance[index],
+
+
+
+                });
+                set.date.push(req.body.date);
+
+                set.save(function(err) {
+                    if (err) return handleError(err);
+                    // saved!
+                });

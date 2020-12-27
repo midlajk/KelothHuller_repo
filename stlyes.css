@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box
+}
+
+
+/* Set height of body and the document to 100% */
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial;
+    background-color: #f1f1f1;
+}
+
+
+/* Style tab links */
+
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    width: 25%;
+}
+
+h3 {
+    color: #777;
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+
+/* Style the tab content (and add height:100% for full page content) */
+
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 100px 20px;
+    height: 100%;
+}
+
+#regForm {
+    background-color: #ffffff;
+    margin: 10px auto;
+    font-family: Raleway;
+    padding: 40px;
+    width: 70%;
+    color: black;
+    min-width: 300px;
+}
+
+h1 {
+    text-align: center;
+    color: blak;
+}
+
+input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+}
+
+
+/* Mark input boxes that gets an error on validation: */
+
+input.invalid {
+    background-color: #ffdddd;
+}
+
+
+/* Hide all steps by default: */
+
+.tab {
+    display: none;
+}
+
+button {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#list {
+    overflow-x: scroll;
+}
+
+#prevBtn {
+    background-color: #bbbbbb;
+}
+
+
+/* Make circles that indicate the steps of the form: */
+
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+
+/* Mark the steps that are finished and valid: */
+
+.step.finish {
+    background-color: #4CAF50;
+}
+
+.modal {
+    color: rgb(26, 25, 25);
+}

@@ -1,0 +1,36 @@
+<div class="topnav" id="myTopnav">
+  <a href="/employee/" class="" >Add</a>
+  <a href="/employee/list" class="" >View</a>
+  <a href="/employee/individual" class="" >Individual</a>
+<a href="/employee/account" class="" >Attendance</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+    <div class="tabcontent">
+        <form id="regForm" method="POST" action="/employee/insert" autocomplete="off">
+            <h1>Search Individual Account</h1>
+            <!-- One "tab" for each step in the form: -->
+            <div>
+
+             
+                <p><label>Name of the worker</label> <input list="browsers" name="woker" placeholder="Name of the worker">
+                     <datalist id="browsers">
+                                  {{#each usersDocuments}}
+                                <option value={{this.name}}>
+                                 {{/each}}
+                                 
+                                </datalist>
+                </p>
+
+
+
+                <button type="submit">Submit</button>
+
+
+            </div>
+            <!-- Circles which indicates the steps of the form: -->
+
+        </form>
+    </div>

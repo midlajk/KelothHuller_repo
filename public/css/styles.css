@@ -1,0 +1,193 @@
+                   * {
+                       box-sizing: border-box
+                   }
+                   /* Set height of body and the document to 100% */
+                   
+                   body,
+                   html {
+                       height: 100%;
+                       margin: 0;
+                       font-family: Arial;
+                       background-color: #f1f1f1;
+                   }
+                   
+                   .topnav {
+                       overflow: hidden;
+                       background-color: #333;
+                   }
+                   
+                   .topnav a {
+                       float: left;
+                       display: block;
+                       color: #f2f2f2;
+                       text-align: center;
+                       padding: 14px 16px;
+                       text-decoration: none;
+                       font-size: 17px;
+                   }
+                   
+                   .topnav a:hover {
+                       background-color: #ddd;
+                       color: black;
+                   }
+                   
+                   .topnav a.active {
+                       background-color: #4CAF50;
+                       color: white;
+                   }
+                   
+                   .topnav .icon {
+                       display: none;
+                   }
+                   /* Style tab links */
+                   
+                   .tablink {
+                       text-decoration: none;
+                       background-color: #555;
+                       color: white;
+                       float: left;
+                       cursor: pointer;
+                       padding: 14px 16px;
+                   }
+                   
+                   h3 {
+                       color: #777;
+                   }
+                   
+                   .tablink:hover {
+                       background-color: #777;
+                   }
+                   /* Style the tab content (and add height:100% for full page content) */
+                   
+                   .display-none {
+                       display: none;
+                   }
+                   
+                   .tabcontent {
+                       color: white;
+                       display: block;
+                       padding: 50px 20px;
+                       height: 100%;
+                   }
+                   
+                   #regForm {
+                       background-color: #ffffff;
+                       margin: 10px auto;
+                       font-family: Raleway;
+                       padding: 40px;
+                       width: 70%;
+                       color: black;
+                       min-width: 300px;
+                   }
+                   
+                   h1 {
+                       text-align: center;
+                       color: blak;
+                   }
+                   
+                   input {
+                       padding: 10px;
+                       width: 100%;
+                       font-size: 17px;
+                       font-family: Raleway;
+                       border: 1px solid #aaaaaa;
+                   }
+                   /* Mark input boxes that gets an error on validation: */
+                   
+                   input.invalid {
+                       background-color: #ffdddd;
+                   }
+                   /* Hide all steps by default: */
+                   
+                   .tab {
+                       display: none;
+                   }
+                   
+                   button {
+                       background-color: #4CAF50;
+                       color: #ffffff;
+                       border: none;
+                       padding: 10px 20px;
+                       font-size: 17px;
+                       font-family: Raleway;
+                       cursor: pointer;
+                   }
+                   
+                   button:hover {
+                       opacity: 0.8;
+                   }
+                   
+                   #list {
+                       overflow-x: scroll;
+                   }
+                   
+                   #prevBtn {
+                       background-color: #bbbbbb;
+                   }
+                   /* Make circles that indicate the steps of the form: */
+                   
+                   .step {
+                       height: 15px;
+                       width: 15px;
+                       margin: 0 2px;
+                       background-color: #bbbbbb;
+                       border: none;
+                       border-radius: 50%;
+                       display: inline-block;
+                       opacity: 0.5;
+                   }
+                   
+                   .step.active {
+                       opacity: 1;
+                   }
+                   /* Mark the steps that are finished and valid: */
+                   
+                   .step.finish {
+                       background-color: #4CAF50;
+                   }
+                   
+                   .modal {
+                       color: rgb(26, 25, 25);
+                   }
+                   
+                   tr {
+                       overflow: scroll;
+                   }
+                   
+                   .margin-top {
+                       margin: auto;
+                       background-color: white;
+                       padding: 20px
+                   }
+                   
+                   @media screen and (max-width: 600px) {
+                       .topnav a:not(:first-child) {
+                           display: none;
+                       }
+                       .topnav a.icon {
+                           float: right;
+                           display: block;
+                       }
+                   }
+                   
+                   @media screen and (max-width: 600px) {
+                       .topnav.responsive {
+                           position: relative;
+                       }
+                       .topnav.responsive .icon {
+                           position: absolute;
+                           right: 0;
+                           top: 0;
+                       }
+                       .topnav.responsive a {
+                           float: none;
+                           display: block;
+                           text-align: left;
+                       }
+                   }
+                   
+                   .check-table {
+                       width: 75%;
+                       margin: 20px;
+                       font-size: 30px;
+                   }

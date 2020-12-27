@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individual | keloth</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/views/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        /* Set height of body and the document to 100% */
+        
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial;
+            background-color: #f1f1f1;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="rrsow h-100 align-items-center">
+        <div style="margin: auto;;background-color:white;padding:20px" class="col-md-8 offset-md-2">
+            <h3>
+                <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+                    <i class="fa fa-plus"> </i> Check New
+                </a>
+                <a href="index.html" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    Back to home
+                </a>
+                <Span>Employee Name</Span>
+            </h3>
+            <table class="table table-striped" id="list">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Work of (Seller Name)</th>
+                        <th>Number of sacks</th>
+                        <th>Kooli</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr>
+                        <td colspan="3">Total Amount</td>
+                        <td>340</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Filter View</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div>
+
+                            <p>
+                                <label>From Date</label><input type="date" placeholder="Date..." name="date"></p>
+                            <p>
+                                <label>To Date</label><input type="date" placeholder="Date..." name="date"></p>
+                            <p><label>Name of the worker</label> <input list="browsers" name="browser" placeholder="Name of the worker">
+                                <datalist id="browsers">
+                                  <option value="Internet Explorer">
+                                  <option value="Firefox">
+                                  <option value="Chrome">
+                                  <option value="Opera">
+                                  <option value="Safari">
+                                </datalist>
+                            </p>
+
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

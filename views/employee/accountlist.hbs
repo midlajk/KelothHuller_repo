@@ -1,0 +1,54 @@
+<div class="topnav" id="myTopnav">
+ <a href="/employee/" class="" >Add</a>
+  <a href="/employee/list" class="" >View</a>
+  <a href="/employee/individual" class="" >Individual</a>
+<a href="/employee/account" class="" >Attendance</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+ 
+ <div class="tabcontent">
+        <div id="regForm">
+            <h1>Leave {{date}}</h1>
+            <!-- One "tab" for each step in the form: -->
+            <div>
+                <hr>
+                <div class="input-group">
+                  <form method="POST" action="/employee/viewAttend"> <input type="date" class="form-control" id="candidate" name="date" required>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-add" type="button">View Leave</button>
+                           
+                        </div></form>
+                          <form method="POST" action="/employee/viewLeave" autocomplete="off"> <input type="name" class="form-control" placeholder="Enter name" id="candidate" name="name" list="browsers" required >
+                           <datalist id="browsers">
+                                  {{#each usersDocuments}}
+                                <option value={{this.name}}>
+                                 {{/each}}
+                                
+                                </datalist>
+                        <div class="input-group-append">
+                            <button type="text" class="btn btn-add" type="button">View Leave</button>
+                           
+                        </div></form>
+                       
+                  
+                </div>
+
+                <!-- ------------------------------------ -->
+                <ul id="dynamic-list">
+                    {{#each usersDocuments}}
+                            {{#each this.details}}
+                                 <li>{{this}}</li>
+                             {{/each}}
+                    {{/each}}
+
+
+
+                </ul>
+
+
+            </div>
+</div>
+
+
