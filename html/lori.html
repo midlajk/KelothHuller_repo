@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/views/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <script src="/public/js/main.js"></script>
+
+
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="/employee/" class="">Add</a>
+        <a href="/employee/list" class="">View</a>
+        <a href="/employee/individual" class="">Individual</a>
+        <a href="/employee/account" class="">Account</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+
+    <div class="tabcontent">
+
+        <form id="regForm" action="/action_page.php">
+            <h1>Add Loori Vadaka</h1>
+            <!-- One "tab" for each step in the form: -->
+            <div> Details:
+
+                <p>
+                    <label>Date</label>
+                    <input type="date" placeholder="Date..." oninput="this.className = ''" name="date"></p>
+                <p><label>Name of Driver or vehicle no</label><input placeholder="Name.." oninput="this.className = ''" name="name"></p>
+                <p> <label>Load to</label><input type="text" placeholder="Enter the load destination" oninput="this.className = ''" name="sack"></p>
+
+                <p> <label>Rent</label><input placeholder="Rent.." oninput="this.className = ''" name="kooli"></p>
+                <p>
+                    <label>Number of chacks</label><input type="number" placeholder="Last name..." oninput="this.className = ''" name="lname" id="num"></p>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
+
+
+
+</body>
+
+</html>

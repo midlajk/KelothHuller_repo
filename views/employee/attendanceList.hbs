@@ -1,0 +1,48 @@
+ <div><header id="header">
+        <div class="header-content clearfix">
+            <a class="logo" href="/"><img src="/public/images/keloth.png" alt=""></a>
+
+        </div>
+        <!-- header content -->
+    </header>
+<div class="tabcontent" style="margin-top: 20px;">
+        <form id="regForm" method="POST" action="/attendanceList" autocomplete="off" style="margin-top: 50px;">
+            <h1>Leave {{date}}</h1>
+            <!-- One "tab" for each step in the form: -->
+            <div>
+                <hr>
+                <div class="input-group">
+
+                          <input type="name" class="form-control" placeholder="Enter name" id="candidate" name="name" list="browsers" required >
+                           <datalist id="browsers">
+                             {{#each usersDocuments}}
+                                <option value={{this.name}}>
+                                 {{/each}}
+                                
+                                </datalist>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-add" >View Leave</button>
+                           
+                        </div>
+                       
+                  
+                </div>
+
+                <!-- ------------------------------------ -->
+                <ul id="dynamic-list">
+                    {{#each usersDocuments}}
+                            {{#each this.details}}
+                                 <li>{{this}}</li>
+                             {{/each}}
+                    {{/each}}
+
+
+
+                </ul>
+
+
+            </div>
+        </form>
+</div>
+
+

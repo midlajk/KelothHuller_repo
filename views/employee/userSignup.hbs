@@ -1,0 +1,37 @@
+<div class="topnav" id="myTopnav">
+  <a href="/employee/" class="">Add</a>
+        <a href="/employee/list" class="">View</a> 
+        <a href="/employee/addRent" class="">AddLori Rent</a>
+        <a href="/employee/viewRent" class="">View Rent</a>
+        <a href="/employee/individual" class="">Individual</a>
+        <a href="/employee/account" class="">Account</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+ 
+ <div class="tabcontent">
+        <form id="regForm" method="POST" action="/employee/userSignup">
+            <h1>{{name}}</h1>
+            <!-- One "tab" for each step in the form: -->
+            <div>
+                <hr>
+                <div class="input-group">
+                 <input type="text" class="form-control" id="candidate" name="name" required>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-add" type="button">Add user</button>
+                           
+                        </div>
+            
+                       
+                  
+                </div>
+
+                <!-- ------------------------------------ -->
+                
+
+            </div>
+</form>
+ </div>
+
+

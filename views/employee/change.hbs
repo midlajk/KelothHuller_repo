@@ -1,0 +1,62 @@
+<div class="topnav" id="myTopnav">
+  <a href="/employee/" class="">Add</a>
+        <a href="/employee/list" class="">View</a> 
+        <a href="/employee/addRent" class="">AddLori Rent</a>
+        <a href="/employee/viewRent" class="">View Rent</a>
+        <a href="/employee/individual" class="">Individual</a>
+        <a href="/employee/account" class="">Account</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+ 
+ <div class="tabcontent">
+        <div id="regForm">
+            <h1>Change market</h1>
+            <!-- One "tab" for each step in the form: -->
+            <div>
+                <h1>Current market</h1>
+                <hr>
+                <table style="width: 100%;">
+                    <tr>
+                        <td><h5>Coffiee:  </h5></td>
+                        <td><h5>Pepper :</h5> </td>
+                        <td><h5>Ginger:</h5> </td>
+                    </tr>
+
+                </table>
+                <div class="input-group">
+                 
+                  <form method="POST" action="/employee/changeCoffie"> <input type="text" class="form-control" id="candidate" name="coffiee" required>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-add" type="button">Update coffiee market</button>
+                           
+                        </div>
+                    </form>
+                          <form method="POST" action="/employee/changePepper" autocomplete="off"> <input type="name" class="form-control" placeholder="Enter name" id="candidate" name="pepper" list="browsers" required >
+                           
+                        <div class="input-group-append">
+                            <button type="text" class="btn btn-add" type="button">Update pepper market</button>
+                           
+                       
+                 </div></form>
+                             <form method="POST" action="/employee/changeGinger" autocomplete="off"> <input type="name" class="form-control" placeholder="Enter name" id="candidate" name="ginger" list="browsers" required >
+                           
+                        <div class="input-group-append">
+                            <button type="text" class="btn btn-add" type="button">Update ginger market
+                            </button>
+                           
+                        </div></form>
+                       
+                       
+                  
+                </div>
+
+                <!-- ------------------------------------ -->
+               
+
+
+            </div>
+</div>
+
+

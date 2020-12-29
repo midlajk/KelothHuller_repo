@@ -26,6 +26,7 @@ var emp = new Schema({
 });
 var attend = new Schema({
     name: String,
+    date: []
 
 
 });
@@ -36,17 +37,31 @@ var markattend = new Schema({
 
 });
 var dateAttend = new Schema({
+    date: String,
     name: String,
-    date: []
+    load: String,
+    rent: String,
+    chack: String
+
+
+
 
 
 
 });
+var UserSchema = new Schema({
+    username: String,
+
+});
+
+var Userschema = mongoose.model('Userschema', UserSchema);
 var Personal = mongoose.model('Personal', dateAttend);
 var Mark = mongoose.model('Mark', markattend);
 var Attendance = mongoose.model('Attendance', attend);
 var Individual = mongoose.model('Individual', emp);
 var Employee = mongoose.model('Employee', employeeSchema);
+
+module.exports = Userschema;
 module.exports = Personal;
 module.exports = Mark;
 module.exports = Attendance;

@@ -1,18 +1,20 @@
 const express = require('express');
 
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs')
+
+
+
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
 
 require('../models/employees_model');
 var fs = require("fs"),
     util = require("util");
 
 var content = fs.readFileSync('index.txt', 'utf8');
-
-
-var flag = 0;
-
-var notter;
-
 
 
 //including model class
@@ -22,9 +24,17 @@ const Person = mongoose.model('Individual')
 const Attendance = mongoose.model('Attendance')
 const Mark = mongoose.model('Mark')
 const Personal = mongoose.model('Personal')
+const Userschema = mongoose.model('Userschema');
 
 const router = express.Router();
 
+//////////
+
+// Handling user signup 
+
+//Showing login form 
+
+//////
 router.get("/", (req, res) => {
 
     Person.find() // <=> wrapper for Model.find() ...
@@ -401,43 +411,115 @@ router.get('/addAttend', (req, res) => {
 })
 router.post('/addAttend', (req, res) => {
 
-    var attendance = req.body.worker;
-    console.log(attendance);
-
-    var add = new Mark({
-        date: req.body.date
-
-    })
-
-    for (let index = 0; index < attendance.length; index++) {
-
-        add.worker.push(attendance[index]);
-        var set = new Personal({
-            name: attendance[index],
+    var datetime = new Date().toISOString().slice(0, 10);
 
 
+    Mark.countDocuments({ date: datetime }, function(err, count) {
+        if (count > 0) {
+            showWindow(datetime);
+            //document exists });
+        } else {
+            addAttendance();
+        }
+    });
 
-        });
-        set.date.push(req.body.date);
+    function showWindow(n) {
+        Attendance.find() // <=> wrapper for Model.find() ...
+            .then(documents => {
+                // create context Object with 'usersDocuments' key
+                const context = {
+                    usersDocuments: documents.map(documents => {
+                        return {
+                            name: documents.name
 
-        set.save(function(err) {
+                        }
+
+                    })
+                }
+
+
+                // rendering usersDocuments from context Object
+                res.render('employee/addAttend', {
+
+                    usersDocuments: context.usersDocuments,
+                    date: "Already added leave of " + n
+
+                })
+            })
+            .catch(error => res.status(500).send(error))
+
+    }
+
+    function addAttendance() {
+        var attendance = req.body.worker;
+        console.log(attendance);
+
+        var add = new Mark({
+            date: datetime
+
+        })
+        for (let index = 0; index < attendance.length; index++) {
+
+            add.worker.push(attendance[index]);
+            Attendance.findOne({ name: attendance[index] }, function(errs, datas) {
+                if (errs) {
+                    res.send(errs);
+                } else {
+                    datas.updateOne({
+                            $push: {
+                                "date": datetime
+
+
+                            }
+                        }, { safe: true, upsert: true },
+                        function(err, model) {
+                            console.log(err);
+                        }
+                    );
+                }
+
+            });
+
+
+        }
+        add.save(function(err) {
             if (err) return handleError(err);
             // saved!
         });
 
-    }
-    add.save(function(err) {
-        if (err) return handleError(err);
-        // saved!
-    });
 
-    res.render('employee/accountlist')
+        Attendance.find() // <=> wrapper for Model.find() ...
+            .then(documents => {
+                // create context Object with 'usersDocuments' key
+                const context = {
+                    usersDocuments: documents.map(document => {
+                        return {
+
+                            name: document.name,
+
+                        }
+
+                    })
+                }
+
+                // rendering usersDocuments from context Object
+                res.render('employee/accountlist', {
+
+                    usersDocuments: context.usersDocuments
+
+                })
+            })
+            .catch(error => res.status(500).send(error))
+
+
+
+    }
 
 
 
 })
 router.get('/accountlist', (req, res) => {
-    Personal.find() // <=> wrapper for Model.find() ...
+    Attendance.find() // <=> wrapper for Model.find() ...
         .then(documents => {
             // create context Object with 'usersDocuments' key
             const context = {
@@ -491,7 +573,7 @@ router.post('/viewAttend', (req, res) => {
 })
 router.post('/viewLeave', (req, res) => {
 
-    Personal.find({ name: req.body.name }) // <=> wrapper for Model.find() ...
+    Attendance.find({ name: req.body.name }) // <=> wrapper for Model.find() ...
         .then(documents => {
             // create context Object with 'usersDocuments' key
             const context = {
@@ -546,6 +628,153 @@ router.post('/insert', (req, res) => {
         .catch(error => res.status(500).send(error))
 })
 
+router.get('/addRent', (req, res) => {
+    res.render('employee/addRent', {
+
+    })
+})
+router.post('/addRent', (req, res) => {
+    var set = new Personal({
+        date: req.body.date,
+        name: req.body.name,
+        load: req.body.load,
+        rent: req.body.rent,
+        chack: req.body.sack
+
+
+    })
+    set.save(function(err) {
+        if (err) return handleError(err);
+        // saved!
+    });
+    Personal.find() // <=> wrapper for Model.find() ...
+        .then(documents => {
+            // create context Object with 'usersDocuments' key
+            const context = {
+                usersDocuments: documents.map(document => {
+                    return {
+                        date: document.date,
+                        name: document.name,
+                        load: document.load,
+                        rent: document.rent,
+                        chack: document.chack,
+                    }
+
+                })
+            }
+
+            // rendering usersDocuments from context Object
+            res.render('employee/viewRent', {
+                title: "new Load Rent Added",
+                usersDocuments: context.usersDocuments
+
+            })
+        })
+        .catch(error => res.status(500).send(error))
+
+
+
+})
+router.get('/viewRent', (req, res) => {
+    Personal.find() // <=> wrapper for Model.find() ...
+        .then(documents => {
+            // create context Object with 'usersDocuments' key
+            const context = {
+                usersDocuments: documents.map(document => {
+                    return {
+                        date: document.date,
+                        name: document.name,
+                        load: document.load,
+                        rent: document.rent,
+                        chack: document.chack,
+                    }
+
+                })
+            }
+
+            // rendering usersDocuments from context Object
+            res.render('employee/viewRent', {
+                title: "complete rent",
+                usersDocuments: context.usersDocuments
+
+            })
+        })
+        .catch(error => res.status(500).send(error))
+
+
+})
+
+router.post('/filterrent', async(req, res) => {
+    // get all items from db collection
+
+    Personal.find({
+            $or: [{ name: req.body.name }, { date: req.body.date }]
+        }) // <=> wrapper for Model.find() ...
+        .then(documents => {
+            // create context Object with 'usersDocuments' key
+            const context = {
+                usersDocuments: documents.map(document => {
+                    return {
+                        date: document.date,
+                        name: document.name,
+                        load: document.load,
+                        rent: document.rent,
+                        chack: document.chack,
+                    }
+
+                })
+            }
+            var s;
+            if (!req.body.name) {
+                s = req.body.date;
+            } else {
+                s = req.body.name;
+            }
+
+            // rendering usersDocuments from context Object
+            res.render('employee/viewRent', {
+                title: "Filtered list of : " + s,
+                usersDocuments: context.usersDocuments
+
+            })
+        })
+        .catch(error => res.status(500).send(error))
+})
+
+
+
+router.get('/userSignup', (req, res) => {
+
+
+    // rendering usersDocuments from context Object
+    res.render('employee/userSignup', {
+        name: "add new user"
+    })
+
+})
+router.post('/userSignup', (req, res) => {
+    var password = new Userschema({
+        username: req.body.name
+
+    });
+    password.save(function(err) {
+        if (err) return handleError(err);
+        // saved!
+    });
+
+    // rendering usersDocuments from context Object
+    res.render('employee/userSignup', {
+        name: "user " + req.body.name + "added successfully"
+    })
+
+})
+router.get('/change', (req, res) => {
+
+
+    // rendering usersDocuments from context Object
+    res.render('employee/change', {})
+
+})
 
 
 

@@ -1,0 +1,35 @@
+  <div class="topnav" id="myTopnav">
+  <a href="/employee/" class="">Add</a>
+        <a href="/employee/list" class="">View</a> 
+        <a href="/employee/addRent" class="">AddLori Rent</a>
+        <a href="/employee/viewRent" class="">View Rent</a>
+        <a href="/employee/individual" class="">Individual</a>
+        <a href="/employee/account" class="">Account</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+
+    <div class="tabcontent">
+
+        <form id="regForm"  method="POST" action="/employee/addRent">
+            <h1>Add Loori Vadaka</h1>
+            <!-- One "tab" for each step in the form: -->
+            <div> Details:
+
+                <p>
+                    <label>Date</label>
+                    <input type="date" placeholder="Date..." oninput="this.className = ''" name="date"></p>
+                <p><label>Name of Driver or vehicle no</label><input placeholder="Name.." oninput="this.className = ''" name="name"></p>
+                <p> <label>Load to</label><input type="text" placeholder="Enter the load destination" oninput="this.className = ''" name="load"></p>
+
+                <p> <label>Rent</label><input placeholder="Rent.." oninput="this.className = ''" name="rent"></p>
+                <p>
+                    <label>Number of chacks</label><input type="number" placeholder="Chack..." oninput="this.className = ''" name="sack" id="num"></p>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
+
